@@ -1,0 +1,2 @@
+module AnalysisDocsHelper
+end

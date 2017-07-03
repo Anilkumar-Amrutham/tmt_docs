@@ -1,0 +1,39 @@
+<%= form_for(analysis_doc) do |f| %>
+  <% if analysis_doc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(analysis_doc.errors.count, "error") %> prohibited this analysis_doc from being saved:</h2>
+
+      <ul>
+      <% analysis_doc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Please select user" %>
+    <%= f.collection_select :user_id, User.order(:forename),:id,:forename, prompt: "Please Select" %>
+  </div>
+
+  
+
+  <div class="field">
+    <%= f.label :us_number %>
+    <%= f.text_field :us_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :us_description %>
+    <%= f.text_area :us_description, cols: "100", rows: "2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :us_analysis %>
+    <%= f.text_area :us_analysis, cols: "100", rows: "25" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

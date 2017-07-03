@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Us number:</strong>
+  <%= @analysis_doc.us_number %>
+</p>
+
+<p>
+  <strong>Us description:</strong>
+  <%= @analysis_doc.us_description %>
+</p>
+
+<p>
+  <strong>Us analysis:</strong>
+  <%= @analysis_doc.us_analysis %>
+</p>
+
+<%= link_to 'Edit', edit_analysis_doc_path(@analysis_doc) %> |
+<%= link_to 'Back', analysis_docs_path %>
