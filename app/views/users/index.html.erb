@@ -20,8 +20,8 @@
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Create Analysis', new_analysis_doc_path(user_id: user.id) %></td>
+        <td><%= link_to 'Show Analysis', analysis_docs_path(user_id: user.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,3 +30,4 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+<%= link_to 'All Analysis Docs', analysis_docs_path %>

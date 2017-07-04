@@ -4,7 +4,7 @@ class AnalysisDocsController < ApplicationController
   # GET /analysis_docs
   # GET /analysis_docs.json
   def index
-    @analysis_docs = AnalysisDoc.all
+    @analysis_docs = params[:user_id].present? ? AnalysisDoc.where(user_id: params[:user_id].to_i) : AnalysisDoc.all
   end
 
   # GET /analysis_docs/1
@@ -15,7 +15,7 @@ class AnalysisDocsController < ApplicationController
   # GET /analysis_docs/new
   def new
     @analysis_doc = AnalysisDoc.new
-    @users = User.all
+    @users = User.order(:forename)
     @analysis_doc.user_id = params[:user_id].to_i if params[:user_id].present?
   end
 
@@ -34,6 +34,7 @@ class AnalysisDocsController < ApplicationController
         format.html { redirect_to @analysis_doc, notice: 'Analysis doc was successfully created.' }
         format.json { render :show, status: :created, location: @analysis_doc }
       else
+        @users = User.order(:forename)
         format.html { render :new }
         format.json { render json: @analysis_doc.errors, status: :unprocessable_entity }
       end
