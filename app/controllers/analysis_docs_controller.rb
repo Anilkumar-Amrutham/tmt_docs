@@ -15,11 +15,13 @@ class AnalysisDocsController < ApplicationController
   # GET /analysis_docs/new
   def new
     @analysis_doc = AnalysisDoc.new
+    @users = User.all
     @analysis_doc.user_id = params[:user_id].to_i if params[:user_id].present?
   end
 
   # GET /analysis_docs/1/edit
   def edit
+    @users = User.order(:forename)
   end
 
   # POST /analysis_docs
@@ -41,6 +43,7 @@ class AnalysisDocsController < ApplicationController
   # PATCH/PUT /analysis_docs/1
   # PATCH/PUT /analysis_docs/1.json
   def update
+    @users = User.order(:forename)
     respond_to do |format|
       if @analysis_doc.update(analysis_doc_params)
         format.html { redirect_to @analysis_doc, notice: 'Analysis doc was successfully updated.' }

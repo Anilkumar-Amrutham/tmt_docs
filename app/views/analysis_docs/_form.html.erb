@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label "Please select user" %>
-    <%= f.collection_select :user_id, User.order(:forename),:id,:forename, prompt: "Please Select" %>
+    <%= f.collection_select :user_id, @users,:id,:forename, prompt: "Please Select" %>
   </div>
 
   
